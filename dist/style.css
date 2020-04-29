@@ -1,0 +1,190 @@
+/* Utility Classes */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.container {
+  padding: 2rem 4rem;
+  display: grid;
+  grid-template-areas: 
+  'Watopia London'
+  'Watopia NewYork'
+  'Richmond Richmond'
+  'Innsbruck Yorkshire';
+  grid-gap: 2rem;
+}
+
+.bg-dark {
+  background: #000;
+  color: #fff;
+  padding: 0.5rem;
+}
+
+.bg-med {
+  background: #eee;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.bg-orange {
+  background: #fc6719;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+/* Page Formatting */
+#header {
+  background: #fc6719;
+  height: 20vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#header #logo {
+  width: 30rem;
+}
+
+#routesCompleted {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.box {
+  border: #000 2px solid;
+}
+
+.heading {
+  background: #fc6719;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0.5rem;
+}
+
+.heading img {
+  width: 1rem;
+}
+
+.heading .completion {
+  font-weight: 300;
+}
+
+#watopia {
+  grid-area: Watopia;
+}
+
+#london {
+  grid-area: London;
+}
+
+#newYork {
+  grid-area: NewYork;
+}
+
+#richmond {
+  grid-area: Richmond;
+}
+
+#innsbruck {
+  grid-area: Innsbruck;
+}
+
+#yorkshire {
+  grid-area: Yorkshire;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
+}
+
+input[type=checkbox] {
+  justify-self: center;
+  align-self: center;
+  font-size: 2rem;
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .heading .completion {
+    padding-top: 1rem;
+  }
+}
+
+/*  
+LONDON
+London Loop
+Greater London Flat
+London 8
+Surrey Hills
+London Classique
+Greatler London 8
+The London Pretzel
+The PRL Half
+Freatet London Flat
+The PRL Full
+Greater London Loop
+Greatest London Loop
+Triple Loops
+*/
+
+/* 
+RICHMOND
+Cobbled Climbs
+2015 UCI Worlds Course
+The Fan Flats
+ */
+
+/* 
+NEW YORK
+Knickerbocker
+Astoria Line 8
+Everything Bagel
+Park Perimeter Loop
+Grand Central Loop
+Knickerbocker Reverse
+Lady Liberty
+Mighty Metropolitan
+Rising Empire
+The 6 Train
+The Highline
+*/
+
+/* 
+INNISBRUCK
+Achterbahn
+Innisbrucking
+2018 UCI World Short Lap
+Lustcher
+Lustcher CCW
+*/
+
+/* 
+YORKSHIRE
+2019 UCI Worlds Harrogate Circuit
+Royal Pump Room 8
+Queen's Highway
+Duchy Estate
+Tour of Tewit Well
+*/
