@@ -1,138 +1,118 @@
-
-// make background orange when checkbox active & global counter
-const mainDiv = document.getElementById('main-div');
-const boxes = mainDiv.getElementsByTagName('input');
-const globalOutput = document.getElementById('globalOutput');
-
-let counter = 0;
-let watopiaCounter = 0;
-let londonCounter = 0;
-let newYorkCounter = 0;
-let richmondCounter = 0;
-let innsbruckCounter = 0;
-let yorkshireCounter = 0;
-
-for(let i = 0; i < boxes.length; i++) {
-  if (boxes[i].type === 'checkbox') {
-    boxes[i].onclick = (e) => {
-      if (boxes[i].checked === true) {
-        e.toElement.parentNode.classList.add('bg-orange');
-        counter++;
-        
-        globalOutput.innerHTML = counter;
-        if (boxes[i].name === 'watopia') {
-          watopiaCounter++;
-
-          document.getElementById('watopiaOutput').innerHTML = watopiaCounter;
-
-          addWatopiaToLS(boxes[i].checked);
-        }
-        else if (boxes[i].name === 'watopia') {
-          watopiaCounter++;
-
-          document.getElementById('watopiaOutput').innerHTML = watopiaCounter;
-        }
-        else if (boxes[i].name === 'london') {
-          londonCounter++;
-
-          document.getElementById('londonOutput').innerHTML = londonCounter;
-        }
-        else if (boxes[i].name === 'newYork') {
-          newYorkCounter++;
-
-          document.getElementById('newYorkOutput').innerHTML = newYorkCounter;
-        }
-        else if (boxes[i].name === 'richmond') {
-          richmondCounter++;
-
-          document.getElementById('richmondOutput').innerHTML = richmondCounter;
-        }
-        else if (boxes[i].name === 'innsbruck') {
-          innsbruckCounter++;
-
-          document.getElementById('innsbruckOutput').innerHTML = innsbruckCounter;
-        }
-        else if (boxes[i].name === 'yorkshire') {
-          yorkshireCounter++;
-
-          document.getElementById('yorkshireOutput').innerHTML = yorkshireCounter;
-        }
-      } else {
-        e.toElement.parentNode.classList.remove('bg-orange');
-        counter--;
-  
-        globalOutput.innerHTML = counter;
-        if (boxes[i].name === 'watopia') {
-          watopiaCounter--;
-
-          document.getElementById('watopiaOutput').innerHTML = watopiaCounter;
-        }
-        else if (boxes[i].name === 'watopia') {
-          watopiaCounter--;
-
-          document.getElementById('watopiaOutput').innerHTML = watopiaCounter;
-
-          removeWatopiaFromLS(boxes[i]);
-        }
-        else if (boxes[i].name === 'london') {
-          londonCounter--;
-
-          document.getElementById('londonOutput').innerHTML = londonCounter;
-        }
-        else if (boxes[i].name === 'newYork') {
-          newYorkCounter--;
-
-          document.getElementById('newYorkOutput').innerHTML = newYorkCounter;
-        }
-        else if (boxes[i].name === 'richmond') {
-          richmondCounter--;
-
-          document.getElementById('richmondOutput').innerHTML = richmondCounter;
-        }
-        else if (boxes[i].name === 'innsbruck') {
-          innsbruckCounter--;
-
-          document.getElementById('innsbruckOutput').innerHTML = innsbruckCounter;
-        }
-        else if (boxes[i].name === 'yorkshire') {
-          yorkshireCounter--;
-
-          document.getElementById('yorkshireOutput').innerHTML = yorkshireCounter;
-        }
-      }
-    };
-  }
-}
-
-
-// Add Watopia to Local Storage
-function addWatopiaToLS(watopia) {
-  let watopias;
-  if (localStorage.getItem('watopias') === null) {
-    watopias = [];
-  } else {
-    watopias = JSON.parse(localStorage.getItem('watopias'));
+class LS {
+  constructor() {
   }
 
-  watopias.push(watopia);
-
-  localStorage.setItem('watopias', JSON.stringify(watopias));
-}
-
-// Remove Watopia from Local Storage
-function removeWatopiaFromLS(watopiaItem) {
-  let watopias;
-  if (localStorage.getItem('watopias') === null) {
-    watopias = [];
-  } else {
-    watopias = JSON.parse(localStorage.getItem('watopias'));
-  }
-
-  watopias.forEach(function(watopia, index) {
-    if(watopiaItem.textContent === watopia) {
-      watopias.splice(index, 1);
+  // WATOPIA
+  addWatopiatoLS(watopia) {
+    let watopiaList;
+    if(localStorage.getItem('watopia') === null) {
+      watopiaList = [];
+    } else {
+      watopiaList = JSON.parse(localStorage.getItem('watopia'));
     }
-  });
+    
+    watopiaList.push(watopia.id);
 
-  localStorage.setItem('watopias', JSON.stringify(watopias));
-}
+    localStorage.setItem('watopia', JSON.stringify(watopiaList));
+  }
+
+  removeWatopiafromLS(item) {
+    let watopiaList;
+    if(localStorage.getItem('watopia') === null) {
+      watopiaList = [];
+    } else {
+      watopiaList = JSON.parse(localStorage.getItem('watopia'));
+    }
+
+    watopiaList.forEach(function(watopiaItem, index) {
+      if(item.id === watopiaItem) {
+        watopiaList.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem('watopia', JSON.stringify(watopiaList));
+  }
+
+  loadWatopiafromLS() {
+    let watopiaList;
+    if(localStorage.getItem('watopia') === null) {
+      watopiaList = [];
+    } else {
+      watopiaList = JSON.parse(localStorage.getItem('watopia'));
+    }
+    
+    watopiaList.forEach(function(item) {
+    //  NOT SURE WHAT TO PUT IN HERE. I CAN HAVE THE PAGE LOAD WITH THE BOXES STILL CHECKED BUT THEY DON'T GET INCLUDED IN THE COUNTERS AND THEY ARE NOT ORANGE LIKE BEFORE PUT INTO LOCAL STORAGE
+    })
+  }
+
+   // LONDON
+   addLondontoLS(london) {
+    let londonList;
+    if(localStorage.getItem('london') === null) {
+      londonList = [];
+    } else {
+      londonList = JSON.parse(localStorage.getItem('london'));
+    }
+
+    londonList.push(london);
+
+    localStorage.setItem('london', JSON.stringify(londonList));
+  }
+
+   // NEW YORK
+   addNYCtoLS(nyc) {
+    let nycList;
+    if(localStorage.getItem('nyc') === null) {
+      nycList = [];
+    } else {
+      nycList = JSON.parse(localStorage.getItem('nyc'));
+    }
+
+    nycList.push(nyc);
+
+    localStorage.setItem('nyc', JSON.stringify(nycList));
+  }
+
+  // NEW YORK
+  addRichmondtoLS(richmond) {
+  let richmondList;
+  if(localStorage.getItem('richmond') === null) {
+    richmondList = [];
+  } else {
+    richmondList = JSON.parse(localStorage.getItem('richmond'));
+  }
+
+  richmondList.push(richmond);
+
+  localStorage.setItem('richmond', JSON.stringify(richmondList));
+  }
+  
+  // INNSBRUCK
+  addInnsbrucktoLS(innsbruck) {
+  let innsbruckList;
+  if(localStorage.getItem('innsbruck') === null) {
+    innsbruckList = [];
+  } else {
+    innsbruckList = JSON.parse(localStorage.getItem('innsbruck'));
+  }
+
+  innsbruckList.push(innsbruck);
+
+  localStorage.setItem('innsbruck', JSON.stringify(innsbruckList));
+  }
+
+  // INNSBRUCK
+  addYorkshiretoLS(yorkshire) {
+    let yorkshireList;
+    if(localStorage.getItem('yorkshire') === null) {
+      yorkshireList = [];
+    } else {
+      yorkshireList = JSON.parse(localStorage.getItem('yorkshire'));
+    }
+  
+    yorkshireList.push(yorkshire);
+  
+    localStorage.setItem('yorkshire', JSON.stringify(yorkshireList));
+    }
+}   

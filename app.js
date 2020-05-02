@@ -1,3 +1,7 @@
+// Init LS
+const ls = new LS();
+
+document.addEventListener('DOMContentLoaded', ls.loadWatopiafromLS);
 
 // make background orange when checkbox active & global counter
 const mainDiv = document.getElementById('main-div');
@@ -24,31 +28,43 @@ for(let i = 0; i < boxes.length; i++) {
           watopiaCounter++;
 
           document.getElementById('watopiaOutput').innerHTML = watopiaCounter;
+
+          ls.addWatopiatoLS(boxes[i]);
         }
         else if (boxes[i].name === 'london') {
           londonCounter++;
 
           document.getElementById('londonOutput').innerHTML = londonCounter;
+
+          ls.addLondontoLS(boxes[i].checked);
         }
         else if (boxes[i].name === 'newYork') {
           newYorkCounter++;
 
           document.getElementById('newYorkOutput').innerHTML = newYorkCounter;
+
+          ls.addNYCtoLS(boxes[i].checked);
         }
         else if (boxes[i].name === 'richmond') {
           richmondCounter++;
 
           document.getElementById('richmondOutput').innerHTML = richmondCounter;
+
+          ls.addRichmondtoLS(boxes[i].checked);
         }
         else if (boxes[i].name === 'innsbruck') {
           innsbruckCounter++;
 
           document.getElementById('innsbruckOutput').innerHTML = innsbruckCounter;
+
+          ls.addInnsbrucktoLS(boxes[i].checked);
         }
         else if (boxes[i].name === 'yorkshire') {
           yorkshireCounter++;
 
           document.getElementById('yorkshireOutput').innerHTML = yorkshireCounter;
+
+          ls.addYorkshiretoLS(boxes[i].checked);
         }
       } else {
         e.toElement.parentNode.classList.remove('bg-orange');
@@ -59,6 +75,8 @@ for(let i = 0; i < boxes.length; i++) {
           watopiaCounter--;
 
           document.getElementById('watopiaOutput').innerHTML = watopiaCounter;
+
+          ls.removeWatopiafromLS(boxes[i])
         }
         else if (boxes[i].name === 'london') {
           londonCounter--;
